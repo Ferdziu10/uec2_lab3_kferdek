@@ -1,0 +1,34 @@
+Warnings, critical warnings and errors from synthesis and implementation
+
+Created: 2024-03-14 15:35:42
+
+----SYNTHESIS----
+WARNING: [Synth 8-3848] Net vio\.rgb in module/entity vga_timing does not have driver. [rtl/vga_timing.sv:15]
+WARNING: [Synth 8-7129] Port vii\.rgb[11] in module draw_bg is either unconnected or has no load
+WARNING: [Synth 8-7129] Port vii\.rgb[10] in module draw_bg is either unconnected or has no load
+WARNING: [Synth 8-7129] Port vii\.rgb[9] in module draw_bg is either unconnected or has no load
+WARNING: [Synth 8-7129] Port vii\.rgb[8] in module draw_bg is either unconnected or has no load
+WARNING: [Synth 8-7129] Port vii\.rgb[7] in module draw_bg is either unconnected or has no load
+WARNING: [Synth 8-7129] Port vii\.rgb[6] in module draw_bg is either unconnected or has no load
+WARNING: [Synth 8-7129] Port vii\.rgb[5] in module draw_bg is either unconnected or has no load
+WARNING: [Synth 8-7129] Port vii\.rgb[4] in module draw_bg is either unconnected or has no load
+WARNING: [Synth 8-7129] Port vii\.rgb[3] in module draw_bg is either unconnected or has no load
+WARNING: [Synth 8-7129] Port vii\.rgb[2] in module draw_bg is either unconnected or has no load
+WARNING: [Synth 8-7129] Port vii\.rgb[1] in module draw_bg is either unconnected or has no load
+WARNING: [Synth 8-7129] Port vii\.rgb[0] in module draw_bg is either unconnected or has no load
+WARNING: [Synth 8-7129] Port vio\.rgb[11] in module vga_timing is either unconnected or has no load
+WARNING: [Synth 8-7129] Port vio\.rgb[10] in module vga_timing is either unconnected or has no load
+WARNING: [Synth 8-7129] Port vio\.rgb[9] in module vga_timing is either unconnected or has no load
+WARNING: [Synth 8-7129] Port vio\.rgb[8] in module vga_timing is either unconnected or has no load
+WARNING: [Synth 8-7129] Port vio\.rgb[7] in module vga_timing is either unconnected or has no load
+WARNING: [Synth 8-7129] Port vio\.rgb[6] in module vga_timing is either unconnected or has no load
+WARNING: [Synth 8-7129] Port vio\.rgb[5] in module vga_timing is either unconnected or has no load
+WARNING: [Synth 8-7129] Port vio\.rgb[4] in module vga_timing is either unconnected or has no load
+WARNING: [Synth 8-7129] Port vio\.rgb[3] in module vga_timing is either unconnected or has no load
+WARNING: [Synth 8-7129] Port vio\.rgb[2] in module vga_timing is either unconnected or has no load
+WARNING: [Synth 8-7129] Port vio\.rgb[1] in module vga_timing is either unconnected or has no load
+WARNING: [Synth 8-7129] Port vio\.rgb[0] in module vga_timing is either unconnected or has no load
+WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
+
+----IMPLEMENTATION----
+CLEAR :)
