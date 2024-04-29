@@ -3,8 +3,10 @@
 module draw_rct (
     vga_if.in vii, 
     vga_if.out vio,
+    input  logic [11:0] xpos,
+    input  logic [11:0] ypos,
     input  logic clk,
-    input  logic rst
+    input  logic rst 
     );
     import vga_pkg::*;
  /* Local variables and signals
@@ -34,7 +36,7 @@ end
 
 
 always_comb begin
-    if ( vii.hcount >= X_RCTSTR && vii.hcount <= X_RCTSTR + WID_RCT && vii.vcount >= Y_RCTSTR && vii.vcount <= Y_RCTSTR + HGH_RCT )
+    if ( vii.hcount >= xpos && vii.hcount <= xpos + WID_RCT && vii.vcount >= ypos && vii.vcount <= ypos + HGH_RCT )
     vga_nxt.rgb = COL_RCT;
 /*
     else if ( vcount_in >= X_RCTSTR && vcount_in <= X_RCTSTR + WID_RCT && hcount_in == Y_RCTSTR + HGH_RCT )

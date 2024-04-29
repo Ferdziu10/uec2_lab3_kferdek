@@ -15,9 +15,16 @@ sv work ../../rtl/vga_pkg.sv \
         ../../rtl/draw_rct.sv \
         ../../rtl/top_vga.sv \
         ../../rtl/vga_if.sv \
+        ../../rtl/draw_mouse.sv \
+        ../../rtl/mouse_to40.sv \
         ../../fpga/rtl/top_vga_basys3.sv \
         ../common/tiff_writer.sv \
-        top_fpga_tb.sv
+        top_fpga_tb.sv 
 
 # compile glbl module - required for IP simulation
-verilog work ../common/glbl.v
+verilog work ../common/glbl.v \
+             ../../fpga/rtl/clk_wiz_0_clk_wiz.v 
+
+vhdl work ../../rtl/Ps2Interface.vhd \
+          ../../rtl/MouseCtl.vhd \
+          ../../rtl/MouseDisplay.vhd 

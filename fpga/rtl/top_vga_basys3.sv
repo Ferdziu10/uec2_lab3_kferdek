@@ -22,7 +22,11 @@ module top_vga_basys3 (
     output wire [3:0] vgaRed,
     output wire [3:0] vgaGreen,
     output wire [3:0] vgaBlue,
-    output wire JA1
+    output wire JA1,
+    inout  wire PS2Clk,
+    inout  wire PS2Data
+
+    
 );
 
 
@@ -30,14 +34,14 @@ module top_vga_basys3 (
  * Local variables and signals
  */
 
-wire clk_in, clk_fb, clk_ss, clk_out;
+wire clk100MHz;
+wire clk40MHz;
 wire locked;
-wire pclk;
 wire pclk_mirror;
 
 (* KEEP = "TRUE" *)
 (* ASYNC_REG = "TRUE" *)
-logic [7:0] safe_start = 0;
+
 // For details on synthesis attributes used above, see AMD Xilinx UG 901:
 // https://docs.xilinx.com/r/en-US/ug901-vivado-synthesis/Synthesis-Attributes
 
@@ -53,6 +57,7 @@ assign JA1 = pclk_mirror;
  * FPGA submodules placement
  */
 
+/*
 IBUF clk_ibuf (
     .I(clk),
     .O(clk_in)
@@ -99,12 +104,26 @@ BUFGCE #(
     .O(pclk)
 );
 
-// Mirror pclk on a pin for use by the testbench;
+// Mirror pclk on a pin for use by the testbench;, clk_ss, clk_out;
 // not functionally required for this design to work.
+*/
+(* CORE_GENERATION_INFO = "clk_wiz_0,clk_wiz_v6_0_9_0_0,{component_name=clk_wiz_0,use_phase_alignment=true,use_min_o_jitter=false,use_max_i_jitter=false,use_dyn_phase_shift=false,use_inclk_switchover=false,use_dyn_reconfig=false,enable_axi=0,feedback_source=FDBK_AUTO,PRIMITIVE=MMCM,num_out_clk=2,clkin1_period=10.000,clkin2_period=10.000,use_power_down=false,use_reset=false,use_locked=true,use_inclk_stopped=false,feedback_type=SINGLE,CLOCK_MGR_TYPE=NA,manual_override=false}" *)
+
+  clk_wiz_0_clk_wiz inst
+  (
+  // Clock out ports  
+  .clk100MHz(clk100MHz),
+  .clk40MHz(clk40MHz),
+  // Status and control signals               
+  .locked(locked),
+ // Clock in ports
+  .clk(clk)
+  );
+
 
 ODDR pclk_oddr (
     .Q(pclk_mirror),
-    .C(pclk),
+    .C(clk40MHz),
     .CE(1'b1),
     .D1(1'b1),
     .D2(1'b0),
@@ -118,13 +137,16 @@ ODDR pclk_oddr (
  */
 
 top_vga u_top_vga (
-    .clk(pclk),
+    .clk(clk40MHz),
+    .clk100MHz(clk100MHz),
     .rst(btnC),
     .r(vgaRed),
     .g(vgaGreen),
     .b(vgaBlue),
     .hs(Hsync),
-    .vs(Vsync)
+    .vs(Vsync),
+    .ps2_clk(PS2Clk),
+    .ps2_data(PS2Data)
 );
 
 endmodule

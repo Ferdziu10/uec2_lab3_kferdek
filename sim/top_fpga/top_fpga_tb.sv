@@ -58,6 +58,8 @@ end
 
 top_vga_basys3 dut (
     .clk(clk),
+    .PS2Clk(PS2Clk),
+    .PS2Data(PS2Data),
     .btnC(rst),
     .Vsync(vs),
     .Hsync(hs),
